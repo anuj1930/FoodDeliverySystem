@@ -39,5 +39,9 @@ public class CustomerService implements ICustomerService{
         return cust_repo.save(customers1);
     }
 
-
+    @Override
+    public String deleteCustomerById(int customer_id){
+        cust_repo.deleteById(customer_id);
+        return "Customer Deleted Successfull";
+    }
 }

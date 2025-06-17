@@ -9,4 +9,5 @@ public interface ICustomerService {
     List<Customers> getCustomers();
     Customers getCustomersById(int customer_id);
     Customers updateCustomer(int customer_id, Customers customers);
+    String deleteCustomerById(int customer_id);
 }

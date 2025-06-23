@@ -1,10 +1,11 @@
 package com.example.foodDeliverySystem.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,6 +17,18 @@ public class Customers {
     private String customer_name;
     private String customer_email;
     private String customer_phone_number;
+
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
+    }
+
+    @OneToMany(mappedBy = "customers", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Orders> ordersList = new ArrayList<>();
 
     public int getCustomer_id() {
         return customer_id;
@@ -48,4 +61,6 @@ public class Customers {
     public void setCustomer_phone_number(String customer_phone_number) {
         this.customer_phone_number = customer_phone_number;
     }
+
+
 }

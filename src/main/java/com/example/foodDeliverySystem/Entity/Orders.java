@@ -27,8 +27,21 @@ public class Orders {
     private Customers customers;
 
 
+    @ManyToOne
+    @JoinColumn(name = "deliveryDriver_id")
+    @JsonIgnoreProperties("ordersList") // Prevents recursion
+    private DeliveryDrivers deliveryDriver;
 
     private String order_status;
+
+    public DeliveryDrivers getDeliveryDriver() {
+        return deliveryDriver;
+    }
+
+    public void setDeliveryDriver(DeliveryDrivers deliveryDriver) {
+        this.deliveryDriver = deliveryDriver;
+    }
+
 
     public int getOrder_id() {
         return order_id;

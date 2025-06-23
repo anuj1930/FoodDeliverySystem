@@ -8,5 +8,5 @@ public interface IOrderService {
     Orders getOrderById(int order_id) ;
     Orders updateOrderStatus(int order_id, Orders order);
     String deleteOrder(int order_id, Orders order);
-
+    Orders assignDriverToOrder(int order_id, int deliverDriver_id);
 }

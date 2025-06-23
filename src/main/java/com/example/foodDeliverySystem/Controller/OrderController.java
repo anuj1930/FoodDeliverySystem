@@ -36,4 +36,13 @@ public class OrderController {
         return order_service.deleteOrder(order_id, order);
     }
 
+    @PutMapping("/{order_id}/assignDriver/{deliveryDriver_id}")
+    public Orders assignDriverToOrder(
+            @PathVariable("order_id") int order_id,
+            @PathVariable("deliveryDriver_id") int deliveryDriver_id) {
+
+        return order_service.assignDriverToOrder(order_id, deliveryDriver_id);
+    }
+
+
 }

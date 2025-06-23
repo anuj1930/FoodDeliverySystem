@@ -11,6 +11,8 @@ public class OrderDTO {
     private LocalDateTime order_date;
     private int restaurant_id;
     private int customer_id;
+    private int deliveryDriver_id;
+
 
     // Getters and Setters
     public int getOrder_id() {
@@ -53,4 +55,11 @@ public class OrderDTO {
         this.customer_id = customer_id;
     }
 
+    public int getDeliveryDriver_id() {
+        return deliveryDriver_id;
+    }
+
+    public void setDeliveryDriver_id(int deliveryDriver_id) {
+        this.deliveryDriver_id = deliveryDriver_id;
+    }
 }

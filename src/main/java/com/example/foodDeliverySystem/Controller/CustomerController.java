@@ -1,6 +1,7 @@
 package com.example.foodDeliverySystem.Controller;
 
 import com.example.foodDeliverySystem.Entity.Customers;
+import com.example.foodDeliverySystem.Entity.Orders;
 import com.example.foodDeliverySystem.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,4 +39,11 @@ public class CustomerController {
     public String deleteCustomerById(@PathVariable int customer_id){
         return cust_service.deleteCustomerById(customer_id);
     }
+
+
+    @GetMapping("/{customer_id}/orders")
+    public List<Orders> getOrdersByCustomerId(@PathVariable int customer_id) {
+        return cust_service.getOrdersByCustomerId(customer_id);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.foodDeliverySystem.Services;
 
+import com.example.foodDeliverySystem.Entity.Menu;
 import com.example.foodDeliverySystem.Entity.Restaurants;
 import com.example.foodDeliverySystem.Repository.IRestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,14 @@ public class RestaurantService implements iRestaurantService {
         resto_repo.deleteById(restaurant_id);
         String str = "Car by id " + restaurant_id + " deleted successfully";
         return str;
+    }
+
+    @Override
+    public List<Menu> getMenuWithRestaurantId(int restaurant_id){
+        Restaurants restaurants = resto_repo.findById(restaurant_id)
+                .orElseThrow(()->new RuntimeException("Not restaurant found with current id"));
+
+        return restaurants.getMenuItems();
     }
 
 }

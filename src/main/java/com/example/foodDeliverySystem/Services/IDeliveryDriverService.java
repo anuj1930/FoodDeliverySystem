@@ -11,4 +11,5 @@ public interface IDeliveryDriverService {
     List<DeliveryDrivers> getDeliveryDrivers();
     DeliveryDrivers getDeliveryDriversById(int deliveryDriver_id);
     List<Orders> getOrdersAssignedToDriver(int deliveryDriver_id);
+    DeliveryDrivers updateLocationForDriver(int deliveryDriver_id, DeliveryDrivers deliveryDrivers);
 }

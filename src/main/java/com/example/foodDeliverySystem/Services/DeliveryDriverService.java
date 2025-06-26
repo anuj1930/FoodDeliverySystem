@@ -39,7 +39,18 @@ public class DeliveryDriverService implements IDeliveryDriverService{
         DeliveryDrivers deliveryDriver = deliveryDriver_repo.findById(deliveryDriver_id)
                 .orElseThrow(() -> new RuntimeException("Delivery Driver for the specific ID is not found"));
 
-        return deliveryDriver.getOrdersList(); // ✅ This returns the list of orders
+        return deliveryDriver.getOrdersList();
     }
+
+    @Override
+    public DeliveryDrivers updateLocationForDriver(int deliveryDriver_id, DeliveryDrivers deliveryDrivers) {
+        DeliveryDrivers existingDriver = deliveryDriver_repo.findById(deliveryDriver_id)
+                .orElseThrow(() -> new RuntimeException("Delivery Driver with the ID not found"));
+
+        existingDriver.setDeliveryDriver_Location(deliveryDrivers.getDeliveryDriver_Location());
+
+        return deliveryDriver_repo.save(existingDriver);
+    }
+
 
 }

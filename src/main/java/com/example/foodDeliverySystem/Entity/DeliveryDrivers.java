@@ -19,6 +19,16 @@ public class DeliveryDrivers {
 
     private String deliveryDriver_vehicleName;
 
+    public String getDeliveryDriver_Location() {
+        return deliveryDriver_Location;
+    }
+
+    public void setDeliveryDriver_Location(String deliveryDriver_Location) {
+        this.deliveryDriver_Location = deliveryDriver_Location;
+    }
+
+    private String deliveryDriver_Location;
+
     @OneToMany(mappedBy = "deliveryDriver", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Orders> ordersList = new ArrayList<>();

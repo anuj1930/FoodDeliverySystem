@@ -1,6 +1,7 @@
 package com.example.foodDeliverySystem.Services;
 
 import com.example.foodDeliverySystem.Entity.Customers;
+import com.example.foodDeliverySystem.Entity.Orders;
 import com.example.foodDeliverySystem.Repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,4 +45,13 @@ public class CustomerService implements ICustomerService{
         cust_repo.deleteById(customer_id);
         return "Customer Deleted Successfull";
     }
+
+    @Override
+    public List<Orders> getOrdersByCustomerId(int customer_id) {
+        Customers customer = cust_repo.findById(customer_id)
+                .orElseThrow(() -> new RuntimeException("No customer with this ID present"));
+
+        return customer.getOrdersList();
+    }
+
 }

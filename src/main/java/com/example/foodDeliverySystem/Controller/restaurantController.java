@@ -1,5 +1,6 @@
 package com.example.foodDeliverySystem.Controller;
 
+import com.example.foodDeliverySystem.Entity.Menu;
 import com.example.foodDeliverySystem.Entity.Restaurants;
 import com.example.foodDeliverySystem.Services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,8 @@ public class restaurantController {
         return  restoService.deleteRestaurants(restaurant_id);
     }
 
+    @GetMapping("/{restaurant_id}/Menu")
+    public List<Menu> getMenuWithRestaurantId(@PathVariable int restaurant_id){
+        return restoService.getMenuWithRestaurantId(restaurant_id);
+    }
 }
